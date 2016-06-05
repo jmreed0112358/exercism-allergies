@@ -9,20 +9,23 @@ public class Allergies
 {
 	private int allergyCode;
 	
-	public Allergies( int allergyCode )
-	{
+	public Allergies( int allergyCode ) {
 		this.allergyCode = allergyCode;
 	}
 
 	public boolean isAllergicTo( Allergen allergen ) {
-		// mask out all bits except the one we want.
-		// Is the final result non-zero?
 		return (allergen.getScore() & this.allergyCode) != 0;
 	}
 	
 	public List<Allergen> getList( ) {
-		List<Allergen> allergenList = new ArrayList<Allergen>();
+		Allergen[] allergenArray = Allergen.values( );
+		List<Allergen> result = new ArrayList<Allergen>();
 		
-		return allergenList;
+		for ( int i = 0 ; i < allergenArray.length ; i++ ) {
+			if ((allergenArray[i].getScore() & this.allergyCode) != 0) {
+				result.add( allergenArray[i] );
+			}
+		}
+		return result;
 	}
 }
