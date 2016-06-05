@@ -3,10 +3,11 @@ import org.junit.Test;
 
 import allergies.enums.Allergen;
 
+import static org.junit.Assert.*;
+
+import java.security.InvalidParameterException;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class AllergiesTest {
 
@@ -20,6 +21,15 @@ public class AllergiesTest {
         assertEquals(false, allergies.isAllergicTo(Allergen.CATS));
     }
 
+    @Test
+    public void negativeAllergyScoreMakesNoSense() {
+    	try {
+    		Allergies allergies = new Allergies(-200);
+    		fail("Should have caught an InvalidParameterException");
+    	} catch (InvalidParameterException ipe) {
+    	}
+    }
+    
     @Test
     public void allergicToEggs() {
         Allergies allergies = new Allergies(1);

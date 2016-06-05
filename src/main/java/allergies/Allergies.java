@@ -1,6 +1,7 @@
 package allergies;
 
 import java.util.List;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 import allergies.enums.Allergen;
@@ -10,6 +11,9 @@ public class Allergies
 	private int allergyCode;
 	
 	public Allergies( int allergyCode ) {
+		if (allergyCode < 0 ) {
+			throw new InvalidParameterException("Negative allergy scores do not make sense!");
+		}
 		this.allergyCode = allergyCode;
 	}
 
