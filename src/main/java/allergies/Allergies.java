@@ -15,7 +15,9 @@ public class Allergies
 	}
 
 	public boolean isAllergicTo( Allergen allergen ) {
-		return false;
+		// mask out all bits except the one we want.
+		// Is the final result non-zero?
+		return (allergen.getScore() & this.allergyCode) != 0;
 	}
 	
 	public List<Allergen> getList( ) {
