@@ -1,3 +1,4 @@
+package allergies.enums;
 public enum Allergen {
     EGGS(1),
     PEANUTS(2),
