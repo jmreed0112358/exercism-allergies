@@ -12,7 +12,7 @@ public class Allergies
 	
 	public Allergies( int allergyCode ) {
 		if (allergyCode < 0 ) {
-			throw new InvalidParameterException("Negative allergy scores do not make sense!");
+			throw new InvalidParameterException("Negative allergy codes do not make sense!");
 		}
 		this.allergyCode = allergyCode;
 	}
